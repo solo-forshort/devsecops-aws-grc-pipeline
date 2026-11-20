@@ -116,10 +116,10 @@ Format: `arn:partition:service:region:account-id:resource`. Every AWS
 resource has one. IAM policies use ARNs to scope permissions precisely;
 `"Resource": "*"` is a common least-privilege finding.
 
-## Interview talking points
+## some questions and answers
 
 - Why not use the root user day to day? It is unrestricted and cannot be limited by policy; protect it with MFA and keep it for rare account-level tasks.
-- Why Identity Center over IAM access keys? Short-lived credentials remove the "leaked key" risk class.
+- Why short-lived credentials (`aws login`) instead of IAM access keys? They expire on their own, which removes the "leaked key" risk class. Identity Center is the industry-standard version of this; I chose the IAM user route because Identity Center requires an AWS Organization, which would have ended my free plan.
 - What is least privilege? Granting only the permissions an identity needs. We apply it when designing permission sets.
 - What is TOTP, and why is a passkey stronger? TOTP codes can be phished in real time on a fake login page; passkeys are bound to the real site.
 
